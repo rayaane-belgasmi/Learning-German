@@ -313,4 +313,13 @@ const vocabulary = [
     displayVocabulary();
     startQuiz();
   };
+
+  const closeBtn = document.querySelector('.close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      document.getElementById('carouselModal').style.display = 'none';
+    });
+  } else {
+    console.error('Close button not found.');
+  }
   
