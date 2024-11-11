@@ -3,40 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>German Lessons</title>
+  <title>earn German with Ray</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Welcome to German Lessons</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="lesson1.html">Lesson 1</a></li>
-        <li><a href="lesson2.html">Lesson 2</a></li>
-        <!-- Add links to additional lessons here -->
-      </ul>
-    </nav>
+    <h1>Welcome to Learn German with Ray</h1>
   </header>
 
-  <main>
-    <section class="intro">
-      <h2>Learn German with Flashcards, Quizzes, and Exercises</h2>
-      <p>Explore our collection of lessons to enhance your German language skills, complete with interactive flashcards, quizzes, and vocabulary exercises.</p>
-    </section>
-
-    <section class="lessons">
-      <h3>Available Lessons</h3>
-      <ul>
-        <li><a href="lesson1.html">Lesson 1: Basic Vocabulary</a></li>
-        <li><a href="lesson2.html">Lesson 2: Grammar and Expressions</a></li>
-        <!-- Add more lessons here -->
-      </ul>
-    </section>
-  </main>
+  <div class="container">
+    <h2>Available Lessons</h2>
+    <div class="lesson-grid">
+      <div class="lesson-tile" onclick="location.href='lesson1.html'">
+        <img src="images/lesson1_thumbnail.webp" alt="Lesson 1 Thumbnail">
+        <div class="lesson-tile-content">
+          <h3>Naschen und Vokabeln</h3>
+          <p>Lesen und Vokabeln Lernen.</p>
+        </div>
+      </div>
+      <div class="lesson-tile" onclick="location.href='lesson2.html'">
+        <img src="images/lesson2_thumbnail.jpg" alt="Lesson 2 Thumbnail">
+        <div class="lesson-tile-content">
+          <h3>Coming up wednesday </h3>
+          <p>Präteritum</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
-    <p>German Lessons © 2024. All rights reserved.</p>
+    <p style="text-align: center; margin-top: 20px;">German Lessons &copy; 2024. All rights reserved.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
