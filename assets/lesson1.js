@@ -215,24 +215,76 @@ const vocabulary = [
     // Add more vocabulary items as needed
   ];
 
-  // Get the modal and close button elements
+  // Lesson One JavaScript
+
+// Vocabulary Data
+const vocabulary = [
+  {
+    german: "Zusammenhang",
+    english: "connection",
+    sentence: "Es gibt einen Zusammenhang zwischen Persönlichkeit und Geschmack.",
+    translation: "There is a connection between personality and taste."
+  },
+  {
+    german: "Aktuelle Studie",
+    english: "current study",
+    sentence: "Die aktuelle Studie zeigt interessante Ergebnisse.",
+    translation: "The current study shows interesting results."
+  },
+  {
+    german: "Verstärkt",
+    english: "enhances",
+    sentence: "Zucker verstärkt die süßen Momente des Lebens.",
+    translation: "Sugar enhances the sweet moments of life."
+  },
+  // ... (Rest of your vocabulary items)
+];
+
+// Shuffle function to randomize arrays
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // Swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex]
+    ];
+  }
+
+  return array;
+}
+
+// Randomize the vocabulary for flashcards
+const flashcardVocabulary = shuffle([...vocabulary]);
+
+// Randomize the vocabulary for the quiz
+const quizVocabulary = shuffle([...vocabulary]);
+
+// Get the modal and close button elements
 const carouselModal = document.getElementById('carouselModal');
 const openCarouselButton = document.getElementById('openCarousel');
 const closeCarouselButton = document.getElementById('closeCarouselModal');
 
 // Open the modal when the "Originaltext lesen" button is clicked
-openCarouselButton.addEventListener('click', function() {
+openCarouselButton.addEventListener('click', function () {
   carouselModal.style.display = 'block';
   swiper.update(); // Update Swiper after display
 });
 
 // Close the modal when the close button is clicked
-closeCarouselButton.addEventListener('click', function() {
+closeCarouselButton.addEventListener('click', function () {
   carouselModal.style.display = 'none';
 });
 
 // Close the modal when clicking outside of the modal content
-window.addEventListener('click', function(event) {
+window.addEventListener('click', function (event) {
   if (event.target == carouselModal) {
     carouselModal.style.display = 'none';
   }
@@ -243,7 +295,7 @@ let currentCardIndex = 0;
 
 function showFlashcard(index) {
   const flashcardContainer = document.getElementById('flashcard-container');
-  const vocab = vocabulary[index];
+  const vocab = flashcardVocabulary[index];
   flashcardContainer.innerHTML = `
     <div class="flashcard" onclick="flipFlashcard()">
       <div class="flashcard-inner">
@@ -266,23 +318,25 @@ function flipFlashcard() {
 }
 
 function showNextFlashcard() {
-  if (currentCardIndex < vocabulary.length - 1) {
-    currentCardIndex++;
-    showFlashcard(currentCardIndex);
-  }
+  currentCardIndex = (currentCardIndex + 1) % flashcardVocabulary.length;
+  showFlashcard(currentCardIndex);
 }
 
 function showPreviousFlashcard() {
-  if (currentCardIndex > 0) {
-    currentCardIndex--;
-    showFlashcard(currentCardIndex);
-  }
+  currentCardIndex =
+    (currentCardIndex - 1 + flashcardVocabulary.length) %
+    flashcardVocabulary.length;
+  showFlashcard(currentCardIndex);
 }
 
 function initializeFlashcards() {
   showFlashcard(currentCardIndex);
-  document.getElementById('next-button').addEventListener('click', showNextFlashcard);
-  document.getElementById('prev-button').addEventListener('click', showPreviousFlashcard);
+  document
+    .getElementById('next-button')
+    .addEventListener('click', showNextFlashcard);
+  document
+    .getElementById('prev-button')
+    .addEventListener('click', showPreviousFlashcard);
 }
 
 // Quiz functionality
@@ -295,8 +349,8 @@ function startQuiz() {
 }
 
 function showQuestion(container) {
-  if (currentQuestion < vocabulary.length) {
-    const vocab = vocabulary[currentQuestion];
+  if (currentQuestion < quizVocabulary.length) {
+    const vocab = quizVocabulary[currentQuestion];
     container.innerHTML = `
       <div class="quiz-question">
         <p>Was bedeutet "${vocab.german}"?</p>
@@ -307,27 +361,33 @@ function showQuestion(container) {
       </div>
     `;
   } else {
-    container.innerHTML = `<p>Dein Ergebnis: ${score}/${vocabulary.length}</p>`;
+    container.innerHTML = `<p>Dein Ergebnis: ${score}/${quizVocabulary.length}</p>`;
   }
 }
 
 function generateOptions(correctVocab) {
   const options = [correctVocab.english];
   while (options.length < 4) {
-    const randomVocab = vocabulary[Math.floor(Math.random() * vocabulary.length)].english;
+    const randomVocab =
+      vocabulary[Math.floor(Math.random() * vocabulary.length)].english;
     if (!options.includes(randomVocab)) {
       options.push(randomVocab);
     }
   }
   // Shuffle options
-  options.sort(() => Math.random() - 0.5);
-  return options.map(option => `<li><button class="quiz-option" onclick="checkAnswer('${option}', '${correctVocab.english}')">${option}</button></li>`).join('');
+  shuffle(options);
+  return options
+    .map(
+      (option) =>
+        `<li><button class="quiz-option" onclick="checkAnswer('${option}', '${correctVocab.english}')">${option}</button></li>`
+    )
+    .join('');
 }
 
 function checkAnswer(selected, correct) {
   const feedback = document.getElementById('feedback');
   if (selected === correct) {
-    feedback.textContent = "Richtig!";
+    feedback.textContent = 'Richtig!';
     score++;
   } else {
     feedback.textContent = `Falsch! Die richtige Antwort ist "${correct}".`;
@@ -338,26 +398,16 @@ function checkAnswer(selected, correct) {
   }, 2000);
 }
 
-// Carousel functionality
-document.getElementById('openCarousel').addEventListener('click', function() {
-  document.getElementById('carouselModal').style.display = 'block';
-  swiper.update(); // Update Swiper after display
-});
-
-document.querySelector('.close').addEventListener('click', function() {
-  document.getElementById('carouselModal').style.display = 'none';
-});
-
 // Initialize Swiper
 const swiper = new Swiper('.swiper', {
   pagination: {
     el: '.swiper-pagination',
-    clickable: true,
+    clickable: true
   },
   navigation: {
     nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
+    prevEl: '.swiper-button-prev'
+  }
 });
 
 // Load slides into Swiper
@@ -371,7 +421,7 @@ for (let i = 1; i <= totalSlides; i++) {
 }
 
 // Initialize the page
-window.onload = function() {
+window.onload = function () {
   initializeFlashcards();
   startQuiz();
 };
