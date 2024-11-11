@@ -3,212 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>German Flashcard Quiz</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-color: #f4f4f9;
-    }
-
-    .container {
-      text-align: center;
-    }
-
-    .flashcard-container {
-      width: 300px;
-      height: 400px;
-      perspective: 1000px;
-      margin: 20px auto;
-    }
-
-    .flashcard {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      border-radius: 10px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-      cursor: pointer;
-    }
-
-    .flashcard.is-flipped {
-      transform: rotateY(180deg);
-    }
-
-    .flashcard .front,
-    .flashcard .back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .flashcard .front {
-      background-color: #6c63ff;
-      color: white;
-      font-size: 1.5em;
-    }
-
-    .flashcard .back {
-      background-color: #ffffff;
-      color: #333;
-      transform: rotateY(180deg);
-      font-size: 1em;
-    }
-
-    .controls {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 1em;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      margin: 0 10px;
-    }
-
-    .prev {
-      background-color: #6c63ff;
-      color: white;
-    }
-
-    .next {
-      background-color: #333;
-      color: white;
-    }
-
-    button:hover {
-      opacity: 0.8;
-    }
-  </style>
+  <title>Lesson 1: Basic Vocabulary</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="lesson1.html">Lesson 1</a></li>
+        <li><a href="lesson2.html">Lesson 2</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<div class="container">
-  <div class="controls">
-    <button class="prev" onclick="prevCard()">Prev</button>
-  </div>
+  <main>
+    <h2>Lesson 1: Basic Vocabulary</h2>
+    <p>In this lesson, you will learn the essential German vocabulary through interactive exercises and flashcards.</p>
 
-  <div class="flashcard-container">
-    <div class="flashcard" id="flashcard">
-      <div class="front" id="flashcard-front">Betonen</div>
-      <div class="back" id="flashcard-back">
-        <p><strong>Emphasize</strong></p>
-        <p><em>Die Forscher betonen, dass diese Erkenntnis wichtig ist.</em></p>
-        <p><small>The researchers emphasize that this finding is important.</small></p>
+    <section class="lesson-material">
+      <h3>Lesson Material</h3>
+      <p>Below you will find images from the original lesson material. Please review them before proceeding to the interactive exercises.</p>
+      <div class="image-container">
+        <img src="images/lesson1_material_1.jpg" alt="Lesson Material Page 1" style="max-width: 100%; height: auto;">
+        <img src="images/lesson1_material_2.jpg" alt="Lesson Material Page 2" style="max-width: 100%; height: auto;">
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="controls">
-    <button class="next" onclick="nextCard()">Next</button>
-  </div>
-</div>
+    <section class="flashcard-container">
+      <div class="flashcard" id="flashcard">
+        <div class="front" id="flashcard-front">Betonen</div>
+        <div class="back" id="flashcard-back">
+          <p><strong>Emphasize</strong></p>
+          <p><em>Die Forscher betonen, dass diese Erkenntnis wichtig ist.</em></p>
+          <p><small>The researchers emphasize that this finding is important.</small></p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<script>
-  const flashcards = [
-    {
-      word: "Betonen",
-      translation: "Emphasize",
-      example: "Die Forscher betonen, dass diese Erkenntnis wichtig ist.",
-      exampleTranslation: "The researchers emphasize that this finding is important."
-    },
-    {
-      word: "Stichprobe",
-      translation: "Sample",
-      example: "Die Studie basiert auf einer großen Stichprobe von Teilnehmern.",
-      exampleTranslation: "The study is based on a large sample of participants."
-    },
-    {
-      word: "Abneigung",
-      translation: "Aversion",
-      example: "Manche Menschen haben eine natürliche Abneigung gegen Süßes.",
-      exampleTranslation: "Some people have a natural aversion to sweets."
-    },
-    {
-      word: "Adipositas",
-      translation: "Obesity",
-      example: "Adipositas ist ein wachsendes Gesundheitsproblem in vielen Ländern.",
-      exampleTranslation: "Obesity is a growing health issue in many countries."
-    },
-    {
-      word: "Diabetes",
-      translation: "Diabetes",
-      example: "Ein hoher Zuckerkonsum kann zu Diabetes führen.",
-      exampleTranslation: "High sugar consumption can lead to diabetes."
-    },
-    {
-      word: "Herz-Kreislauf-Erkrankungen",
-      translation: "Cardiovascular Diseases",
-      example: "Herz-Kreislauf-Erkrankungen sind häufig mit einem ungesunden Lebensstil verbunden.",
-      exampleTranslation: "Cardiovascular diseases are often associated with an unhealthy lifestyle."
-    },
-    {
-      word: "Schmerzgrenze",
-      translation: "Pain Threshold",
-      example: "Jeder Mensch hat eine individuelle Schmerzgrenze.",
-      exampleTranslation: "Everyone has an individual pain threshold."
-    }
-  ];
+  <footer>
+    <p>German Lessons &copy; 2024. All rights reserved.</p>
+  </footer>
 
-  let currentCard = 0;
-
-  const flashcard = document.getElementById("flashcard");
-  const front = document.getElementById("flashcard-front");
-  const back = document.getElementById("flashcard-back");
-
-  function loadCard(index) {
-    front.textContent = flashcards[index].word;
-    back.innerHTML = `<p><strong>${flashcards[index].translation}</strong></p>
-                      <p><em>${flashcards[index].example}</em></p>
-                      <p><small>${flashcards[index].exampleTranslation}</small></p>`;
-  }
-
-  function flipCard() {
-    flashcard.classList.toggle("is-flipped");
-  }
-
-  function prevCard() {
-    if (currentCard > 0) {
-      currentCard--;
-      loadCard(currentCard);
-      flashcard.classList.remove("is-flipped");
-    }
-  }
-
-  function nextCard() {
-    if (currentCard < flashcards.length - 1) {
-      currentCard++;
-      loadCard(currentCard);
-      flashcard.classList.remove("is-flipped");
-    }
-  }
-
-  flashcard.addEventListener("click", flipCard);
-  loadCard(currentCard);
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
