@@ -102,3 +102,12 @@ footer p {
     max-width: 300px;
   }
 }
+
+/* Logo Styling */
+.logo {
+  width: 100px; /* Adjust size as needed */
+  height: auto;
+  display: block;
+  margin: 0 auto 20px auto; /* Centers the logo and adds space below */
+}
+
