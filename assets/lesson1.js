@@ -300,11 +300,11 @@ const vocabulary = [
   
   // Load slides into Swiper
   const swiperWrapper = document.querySelector('.swiper-wrapper');
-  const totalSlides = 3; // Adjust based on the number of images you have
+  const totalSlides = 2; // Adjust based on the number of images you have
   for (let i = 1; i <= totalSlides; i++) {
     const slide = document.createElement('div');
     slide.classList.add('swiper-slide');
-    slide.innerHTML = `<img src="assets/images/text-slide${i}.jpg" alt="Text Slide ${i}" style="width:100%; height:auto;">`;
+    slide.innerHTML = `<img src="assets/images/text-slide${i}.jpg" alt="Text Slide ${i}" style="width:auto; height:100%;">`;
     swiperWrapper.appendChild(slide);
   }
   
