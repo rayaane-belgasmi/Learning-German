@@ -214,9 +214,6 @@ const vocabulary = [
     },
     // Add more vocabulary items as needed
   ];
-// Lesson One JavaScript
-
-
 
 // Flashcard functionality
 let currentCardIndex = 0;
@@ -346,7 +343,7 @@ const totalSlides = 2; // Adjust based on the number of images you have
 for (let i = 1; i <= totalSlides; i++) {
   const slide = document.createElement('div');
   slide.classList.add('swiper-slide');
-  slide.innerHTML = `<img src="assets/images/text-slide${i}.jpg" alt="Text Slide ${i}" style="width:auto; height:100%;">`;
+  slide.innerHTML = `<img src="assets/images/text-slide${i}.jpg" alt="Text Slide ${i}" style="width:100%; height:auto;">`;
   swiperWrapper.appendChild(slide);
 }
 
@@ -355,12 +352,3 @@ window.onload = function() {
   initializeFlashcards();
   startQuiz();
 };
-
-const closeBtn = document.querySelector('.close');
-if (closeBtn) {
-  closeBtn.addEventListener('click', function() {
-    document.getElementById('carouselModal').style.display = 'none';
-  });
-} else {
-  console.error('Close button not found.');
-}
