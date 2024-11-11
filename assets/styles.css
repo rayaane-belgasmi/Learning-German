@@ -1,172 +1,12 @@
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  
-  
-  header, footer {
-    text-align: center;
-    background-color: #f9f9f9;
-    padding: 20px;
-  }
-  
-  h1 {
-    color: #d2691e;
-  }
-  
-  footer p {
-    margin: 0;
-  }
-  
-  /* Menu Styles */
-  .lessons-menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px;
-  }
-  
-  .lesson-tile {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin: 15px;
-    width: 280px;
-    text-align: center;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .lesson-tile img {
-    width: 100%;
-    height: auto;
-  }
-  
-  .lesson-tile a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    padding: 15px;
-  }
-  
-  .lesson-tile h2 {
-    margin: 10px 0 5px;
-  }
-  
-  .lesson-tile p {
-    margin: 0 0 10px;
-  }
-  
-  /* Button Styles */
-  #backToMenu {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #d2691e;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  #backToMenu:hover {
-    background-color: #c25d19;
-  }
-  
-  /* Additional styles for lesson pages */
-  
-  /* Vocabulary Styles */
-  .vocab-item {
-    background-color: #fff;
-    width: 280px;
-    margin: 15px;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .vocab-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .vocab-item h3 {
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .vocab-item p {
-    color: #555;
-    margin-bottom: 10px;
-  }
-  
-  .vocab-item em {
-    color: #777;
-    font-style: italic;
-  }
-  
-  
-  /* Quiz Styles */
-  .quiz-question {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-  
-  .quiz-options {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .quiz-options li {
-    margin: 10px 0;
-  }
-  
-  /* Modal Styles */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.8);
-  }
-  
-  .modal-content {
-    position: relative;
-    margin: auto;
-    padding: 0;
-    width: 80%;
-    max-width: 800px;
-  }
-  
-  .close {
-    position: absolute;
-    right: 25px;
-    top: 10px;
-    color: #fff;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  /* Swiper Styles */
-  .swiper {
-    width: 100%;
-    height: 500px;
-  }
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
 
- /* Background Container */
+/* Background Container */
 .background-container {
   position: relative;
   width: 100%;
@@ -185,11 +25,27 @@ body {
   z-index: -1; /* Places the background behind content */
 }
 
+/* Header (Title) Styling */
+.background-container header {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  z-index: 1; /* Ensures it's on top of the background image */
+}
+
+.background-container header h1 {
+  color: #fff; /* White text for contrast */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adds text shadow for readability */
+  font-size: 48px;
+  margin-top: 0;
+}
+
 /* Lessons Menu Styling */
 .lessons-menu {
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   padding: 20px;
   z-index: 1; /* Ensures it's on top of the background image */
@@ -216,7 +72,33 @@ body {
   display: block;
 }
 
-.lesson-tile h2, .lesson-tile p {
+.lesson-tile h2,
+.lesson-tile p {
   margin: 10px;
+  color: #333;
 }
-  
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Additional Styles (Optional) */
+
+/* Adjusting header on smaller screens */
+@media (max-width: 600px) {
+  .background-container header h1 {
+    font-size: 36px;
+  }
+
+  .lesson-tile {
+    width: 100%;
+    max-width: 300px;
+  }
+}
