@@ -15,19 +15,47 @@
     <button id="backToMenu" onclick="window.location.href='index.html'">Back to Menu</button>
   </header>
   <main>
-    <!-- Include lesson content: summary, vocabulary, quiz, carousel -->
     <section id="summary">
       <h2>Zusammenfassung</h2>
       <p>In dieser Lektion lernst du neue Wörter zum Thema Süße und Persönlichkeit.</p>
       <p><em>In this lesson, you will learn new words about sweetness and personality.</em></p>
     </section>
-    <!-- Rest of the content as per previous instructions -->
+    <section id="vocabulary">
+      <h2>Wortschatz mit Beispielsätzen</h2>
+      <div class="vocab-list">
+        <!-- Vocabulary will be injected here by JavaScript -->
+      </div>
+    </section>
+    <section id="quiz">
+      <h2>Interaktives Quiz</h2>
+      <div id="quiz-container">
+        <!-- Quiz questions will be generated here by JavaScript -->
+      </div>
+    </section>
   </main>
   <footer>
     <p>&copy; 2024 German Vocabulary Lessons</p>
+    <p><em>Have fun learning!</em></p>
   </footer>
 
-  <!-- Swiper JS -->
+  <!-- Carousel Modal -->
+  <div id="carouselModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <!-- Swiper -->
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <!-- Slides will be added here by JavaScript -->
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+
 <!-- Swiper JS from CDN -->
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
