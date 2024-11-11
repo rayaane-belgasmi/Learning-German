@@ -4,75 +4,71 @@
   <meta charset="UTF-8">
   <title>Lesson One: Sweet Words</title>
   <link rel="stylesheet" href="assets/styles.css">
+  <!-- Swiper CSS from CDN -->
   <link
   rel="stylesheet"
   href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-/>
+  />
 </head>
 <body>
   <div class="background-container">
-    <img src="assets/images/backgroud.png" alt="Decorative Background" class="background-image">
-    <!-- Your other content here -->
+    <!-- Header -->
+    <header>
+      <h1>Süße Worte</h1>
+      <p>Lerne neue deutsche Vokabeln im Kontext!</p>
+      <button id="openCarousel">Originaltext lesen</button>
+    </header>
+    <main>
+      <section id="summary">
+        <h2>Zusammenfassung</h2>
+        <p>In dieser Lektion lernst du neue Wörter zum Thema Süße und Persönlichkeit.</p>
+        <p><em>In this lesson, you will learn new words about sweetness and personality.</em></p>
+      </section>
+      <section id="vocabulary">
+        <h2>Wortschatz</h2>
+        <div id="flashcard-container">
+          <!-- Flashcards will be injected here by JavaScript -->
+        </div>
+        <div id="flashcard-controls">
+          <button id="prev-button">Vorheriges</button>
+          <button id="next-button">Nächstes</button>
+        </div>
+      </section>
+      <section id="quiz">
+        <h2>Interaktives Quiz</h2>
+        <div id="quiz-container">
+          <!-- Quiz will be generated here by JavaScript -->
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 German Vocabulary Lessons</p>
+      <p><em>Viel Spaß beim Lernen!</em></p>
+    </footer>
 
-  <header>
-    <h1>Süße Worte</h1>
-    <p>Lerne neue deutsche Vokabeln im Kontext!</p>
-    <button id="openCarousel">Originaltext lesen</button>
-
-    <!-- Add this around line 20-30 -->
-<div class="modal" id="lessonModal">
-  <img src="assets/text-slide1.jpg" alt="Lesson Image" class="modal-image">
-  <button class="modal-close" onclick="closeModal()">Close</button>
-</div>
-
-</header>
-  <main>
-    <section id="summary">
-      <h2>Zusammenfassung</h2>
-      <p>In dieser Lektion lernst du neue Wörter zum Thema Süße und Persönlichkeit.</p>
-      <p><em>In this lesson, you will learn new words about sweetness and personality.</em></p>
-    </section>
-    <section id="vocabulary">
-      <h2>Wortschatz mit Beispielsätzen</h2>
-      <div class="vocab-list">
-        <!-- Vocabulary will be injected here by JavaScript -->
+    <!-- Carousel Modal -->
+    <div id="carouselModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <!-- Swiper -->
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <!-- Slides will be added here by JavaScript -->
+          </div>
+          <!-- Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Navigation -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
       </div>
-    </section>
-    <section id="quiz">
-      <h2>Interaktives Quiz</h2>
-      <div id="quiz-container">
-        <!-- Quiz questions will be generated here by JavaScript -->
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2024 German Vocabulary Lessons</p>
-    <p><em>Have fun learning!</em></p>
-  </footer>
-
-<!-- Carousel Modal -->
-<div id="carouselModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <!-- Swiper -->
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <!-- Slides will be added here by JavaScript -->
-      </div>
-      <!-- Pagination -->
-      <div class="swiper-pagination"></div>
-      <!-- Navigation -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
     </div>
+
+    <!-- Swiper JS from CDN -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- Lesson-specific JavaScript -->
+    <script src="assets/lesson1.js"></script>
   </div>
-</div>
-
-<!-- Swiper JS from CDN -->
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-
-  <!-- Lesson-specific JavaScript -->
-  <script src="assets/lesson1.js"></script>
-</div>
 </body>
 </html>

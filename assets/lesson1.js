@@ -214,112 +214,153 @@ const vocabulary = [
     },
     // Add more vocabulary items as needed
   ];
-  
-  // Function to display vocabulary
-  function displayVocabulary() {
-    const vocabList = document.querySelector('.vocab-list');
-    vocabulary.forEach(item => {
-      const vocabItem = document.createElement('div');
-      vocabItem.classList.add('vocab-item');
-      vocabItem.innerHTML = `
-        <h3>${item.german} - ${item.english}</h3>
-        <p><strong>Satz:</strong> ${item.sentence}</p>
-        <p><em>${item.translation}</em></p>
-      `;
-      vocabList.appendChild(vocabItem);
-    });
-  }
-  
-  // Quiz functionality
-  let currentQuestion = 0;
-  let score = 0;
-  
-  function startQuiz() {
-    const quizContainer = document.getElementById('quiz-container');
-    showQuestion(quizContainer);
-  }
-  
-  function showQuestion(container) {
-    if (currentQuestion < vocabulary.length) {
-      const vocab = vocabulary[currentQuestion];
-      container.innerHTML = `
-        <div class="quiz-question">
-          <p>Was bedeutet "${vocab.german}" auf Englisch?</p>
-          <ul class="quiz-options">
-            ${generateOptions(vocab)}
-          </ul>
+// Lesson One JavaScript
+
+
+
+// Flashcard functionality
+let currentCardIndex = 0;
+
+function showFlashcard(index) {
+  const flashcardContainer = document.getElementById('flashcard-container');
+  const vocab = vocabulary[index];
+  flashcardContainer.innerHTML = `
+    <div class="flashcard" onclick="flipFlashcard()">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <h3>${vocab.german}</h3>
         </div>
-      `;
-    } else {
-      container.innerHTML = `<p>Dein Ergebnis: ${score}/${vocabulary.length}</p>`;
+        <div class="flashcard-back">
+          <p><strong>${vocab.english}</strong></p>
+          <p><strong>Satz:</strong> ${vocab.sentence}</p>
+          <p><em>${vocab.translation}</em></p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function flipFlashcard() {
+  const flashcard = document.querySelector('.flashcard');
+  flashcard.classList.toggle('flipped');
+}
+
+function showNextFlashcard() {
+  if (currentCardIndex < vocabulary.length - 1) {
+    currentCardIndex++;
+    showFlashcard(currentCardIndex);
+  }
+}
+
+function showPreviousFlashcard() {
+  if (currentCardIndex > 0) {
+    currentCardIndex--;
+    showFlashcard(currentCardIndex);
+  }
+}
+
+function initializeFlashcards() {
+  showFlashcard(currentCardIndex);
+  document.getElementById('next-button').addEventListener('click', showNextFlashcard);
+  document.getElementById('prev-button').addEventListener('click', showPreviousFlashcard);
+}
+
+// Quiz functionality
+let currentQuestion = 0;
+let score = 0;
+
+function startQuiz() {
+  const quizContainer = document.getElementById('quiz-container');
+  showQuestion(quizContainer);
+}
+
+function showQuestion(container) {
+  if (currentQuestion < vocabulary.length) {
+    const vocab = vocabulary[currentQuestion];
+    container.innerHTML = `
+      <div class="quiz-question">
+        <p>Was bedeutet "${vocab.german}"?</p>
+        <ul class="quiz-options">
+          ${generateOptions(vocab)}
+        </ul>
+        <p id="feedback"></p>
+      </div>
+    `;
+  } else {
+    container.innerHTML = `<p>Dein Ergebnis: ${score}/${vocabulary.length}</p>`;
+  }
+}
+
+function generateOptions(correctVocab) {
+  const options = [correctVocab.english];
+  while (options.length < 4) {
+    const randomVocab = vocabulary[Math.floor(Math.random() * vocabulary.length)].english;
+    if (!options.includes(randomVocab)) {
+      options.push(randomVocab);
     }
   }
-  
-  function generateOptions(correctVocab) {
-    const options = [correctVocab.english];
-    while (options.length < 4) {
-      const randomVocab = vocabulary[Math.floor(Math.random() * vocabulary.length)].english;
-      if (!options.includes(randomVocab)) {
-        options.push(randomVocab);
-      }
-    }
-    // Shuffle options
-    options.sort(() => Math.random() - 0.5);
-    return options.map(option => `<li><button onclick="checkAnswer('${option}', '${correctVocab.english}')">${option}</button></li>`).join('');
+  // Shuffle options
+  options.sort(() => Math.random() - 0.5);
+  return options.map(option => `<li><button class="quiz-option" onclick="checkAnswer('${option}', '${correctVocab.english}')">${option}</button></li>`).join('');
+}
+
+function checkAnswer(selected, correct) {
+  const feedback = document.getElementById('feedback');
+  if (selected === correct) {
+    feedback.textContent = "Richtig!";
+    score++;
+  } else {
+    feedback.textContent = `Falsch! Die richtige Antwort ist "${correct}".`;
   }
-  
-  function checkAnswer(selected, correct) {
-    if (selected === correct) {
-      score++;
-    }
-    currentQuestion++;
+  currentQuestion++;
+  setTimeout(() => {
     showQuestion(document.getElementById('quiz-container'));
-  }
-  
-  // Carousel functionality
-  document.getElementById('openCarousel').addEventListener('click', function() {
-    document.getElementById('carouselModal').style.display = 'block';
-    swiper.update(); // Update Swiper after display
-  });
-  
-  document.querySelector('.close').addEventListener('click', function() {
+  }, 2000);
+}
+
+// Carousel functionality
+document.getElementById('openCarousel').addEventListener('click', function() {
+  document.getElementById('carouselModal').style.display = 'block';
+  swiper.update(); // Update Swiper after display
+});
+
+document.querySelector('.close').addEventListener('click', function() {
+  document.getElementById('carouselModal').style.display = 'none';
+});
+
+// Initialize Swiper
+const swiper = new Swiper('.swiper', {
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+
+// Load slides into Swiper
+const swiperWrapper = document.querySelector('.swiper-wrapper');
+const totalSlides = 2; // Adjust based on the number of images you have
+for (let i = 1; i <= totalSlides; i++) {
+  const slide = document.createElement('div');
+  slide.classList.add('swiper-slide');
+  slide.innerHTML = `<img src="assets/images/text-slide${i}.jpg" alt="Text Slide ${i}" style="width:auto; height:100%;">`;
+  swiperWrapper.appendChild(slide);
+}
+
+// Initialize the page
+window.onload = function() {
+  initializeFlashcards();
+  startQuiz();
+};
+
+const closeBtn = document.querySelector('.close');
+if (closeBtn) {
+  closeBtn.addEventListener('click', function() {
     document.getElementById('carouselModal').style.display = 'none';
   });
-  
-  // Initialize Swiper
-  const swiper = new Swiper('.swiper', {
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
-  
-  // Load slides into Swiper
-  const swiperWrapper = document.querySelector('.swiper-wrapper');
-  const totalSlides = 2; // Adjust based on the number of images you have
-  for (let i = 1; i <= totalSlides; i++) {
-    const slide = document.createElement('div');
-    slide.classList.add('swiper-slide');
-    slide.innerHTML = `<img src="assets/images/text-slide${i}.jpg" alt="Text Slide ${i}" style="width:auto; height:100%;">`;
-    swiperWrapper.appendChild(slide);
-  }
-  
-  // Initialize the page
-  window.onload = function() {
-    displayVocabulary();
-    startQuiz();
-  };
-
-  const closeBtn = document.querySelector('.close');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function() {
-      document.getElementById('carouselModal').style.display = 'none';
-    });
-  } else {
-    console.error('Close button not found.');
-  }
-  
+} else {
+  console.error('Close button not found.');
+}
