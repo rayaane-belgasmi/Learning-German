@@ -2,39 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>earn German with Ray</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>German Vocabulary Lessons</title>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
   <header>
-    <h1>Welcome to Learn German with Ray</h1>
+    <h1>German Vocabulary Lessons</h1>
   </header>
-
-  <div class="container">
-    <h2>Available Lessons</h2>
-    <div class="lesson-grid">
-      <div class="lesson-tile" onclick="location.href='lesson1.html'">
-        <img src="images/lesson1_thumbnail.webp" alt="Lesson 1 Thumbnail">
-        <div class="lesson-tile-content">
-          <h3>Naschen und Vokabeln</h3>
-          <p>Lesen und Vokabeln Lernen.</p>
-        </div>
+  <main>
+    <section class="lessons-menu">
+      <div class="lesson-tile">
+        <a href="lesson1.html">
+          <img src="assets/images/lesson1-thumbnail.jpg" alt="Lesson One Thumbnail">
+          <h2>Lesson One: Sweet Words</h2>
+          <p>Learn new German vocabulary about sweetness and personality.</p>
+        </a>
       </div>
-      <div class="lesson-tile" onclick="location.href='lesson2.html'">
-        <img src="images/lesson2_thumbnail.jpg" alt="Lesson 2 Thumbnail">
-        <div class="lesson-tile-content">
-          <h3>Coming up wednesday </h3>
-          <p>Präteritum</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
+      <!-- Future lesson tiles can be added here -->
+    </section>
+  </main>
   <footer>
-    <p style="text-align: center; margin-top: 20px;">German Lessons &copy; 2024. All rights reserved.</p>
+    <p>&copy; 2024 German Vocabulary Lessons</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>

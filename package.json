@@ -1,0 +1,17 @@
+{
+    "name": "Learn german with Ray",
+    "version": "1.0.0",
+    "description": "Interactive German vocabulary lessons ",
+    "main": "index.js",
+    "scripts": {
+        "start": "live-server"
+    },
+    "dependencies": {
+        "swiper": "^8.4.5"
+    },
+    "devDependencies": {
+        "live-server": "^1.2.0"
+    },
+    "author": "",
+    "license": "ISC"
+}
