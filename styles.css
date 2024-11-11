@@ -1,5 +1,11 @@
-body {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
+  }
+  
+  body {
     background-color: #f4f4f9;
     color: #333;
     line-height: 1.6;
@@ -8,11 +14,11 @@ body {
   header {
     background: #6c63ff;
     color: #fff;
-    padding: 10px 0;
+    padding: 10px;
+    text-align: center;
   }
   
   header h1 {
-    text-align: center;
     margin: 0;
   }
   
@@ -36,10 +42,90 @@ body {
     text-decoration: underline;
   }
   
-  .main {
-    max-width: 800px;
+  .container {
+    max-width: 1200px;
     margin: 20px auto;
     padding: 0 20px;
+  }
+  
+  .lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .lesson-tile {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .lesson-tile:hover {
+    transform: translateY(-10px);
+  }
+  
+  .lesson-tile img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .lesson-tile-content {
+    padding: 15px;
+  }
+  
+  .lesson-tile-content h3 {
+    margin-bottom: 10px;
+  }
+  
+  .flashcard-container {
+    max-width: 400px;
+    margin: 20px auto;
+    perspective: 1000px;
+  }
+  
+  .flashcard {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+  
+  .flashcard.is-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  .flashcard .front,
+  .flashcard .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .flashcard .front {
+    background-color: #6c63ff;
+    color: white;
+    font-size: 1.5em;
+  }
+  
+  .flashcard .back {
+    background-color: #ffffff;
+    color: #333;
+    transform: rotateY(180deg);
+    font-size: 1em;
   }
   
   footer {

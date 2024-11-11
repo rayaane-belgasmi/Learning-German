@@ -3,47 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lesson 1: Basic Vocabulary</title>
+  <title>German Lessons</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="lesson1.html">Lesson 1</a></li>
-        <li><a href="lesson2.html">Lesson 2</a></li>
-      </ul>
-    </nav>
+    <h1>Welcome to German Lessons</h1>
   </header>
 
-  <main>
-    <h2>Lesson 1: Basic Vocabulary</h2>
-    <p>In this lesson, you will learn the essential German vocabulary through interactive exercises and flashcards.</p>
-
-    <section class="lesson-material">
-      <h3>Lesson Material</h3>
-      <p>Below you will find images from the original lesson material. Please review them before proceeding to the interactive exercises.</p>
-      <div class="image-container">
-        <img src="images/lesson1_material_1.jpg" alt="Lesson Material Page 1" style="max-width: 100%; height: auto;">
-        <img src="images/lesson1_material_2.jpg" alt="Lesson Material Page 2" style="max-width: 100%; height: auto;">
-      </div>
-    </section>
-
-    <section class="flashcard-container">
-      <div class="flashcard" id="flashcard">
-        <div class="front" id="flashcard-front">Betonen</div>
-        <div class="back" id="flashcard-back">
-          <p><strong>Emphasize</strong></p>
-          <p><em>Die Forscher betonen, dass diese Erkenntnis wichtig ist.</em></p>
-          <p><small>The researchers emphasize that this finding is important.</small></p>
+  <div class="container">
+    <h2>Available Lessons</h2>
+    <div class="lesson-grid">
+      <div class="lesson-tile" onclick="location.href='lesson1.html'">
+        <img src="images/lesson1_thumbnail.jpg" alt="Lesson 1 Thumbnail">
+        <div class="lesson-tile-content">
+          <h3>Lesson 1: Basic Vocabulary</h3>
+          <p>Learn essential German vocabulary to get started with your learning journey.</p>
         </div>
       </div>
-    </section>
-  </main>
+      <div class="lesson-tile" onclick="location.href='lesson2.html'">
+        <img src="images/lesson2_thumbnail.jpg" alt="Lesson 2 Thumbnail">
+        <div class="lesson-tile-content">
+          <h3>Lesson 2: Grammar and Expressions</h3>
+          <p>Understand German grammar rules and common expressions for daily use.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
-    <p>German Lessons &copy; 2024. All rights reserved.</p>
+    <p style="text-align: center; margin-top: 20px;">German Lessons &copy; 2024. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>

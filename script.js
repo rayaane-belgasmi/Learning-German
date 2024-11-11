@@ -78,3 +78,4 @@ const flashcards = [
   
   flashcard.addEventListener("click", flipCard);
   loadCard(currentCard);
+  
