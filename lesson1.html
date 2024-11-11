@@ -1,40 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>earn German with Ray</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Süße Worte - Deutsch Vokabellektion</title>
+    <style>
+        /* Eingebettetes CSS */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+        }
+
+        header h1 {
+            color: #d2691e;
+        }
+
+        #openCarousel {
+            padding: 10px 20px;
+            background-color: #d2691e;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        .vocab-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .vocab-item {
+            background-color: rgba(255, 255, 255, 0.9);
+            width: 300px;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .vocab-item h3 {
+            color: #d2691e;
+        }
+
+        .vocab-item em {
+            color: #666;
+            font-style: italic;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .quiz-question {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .quiz-options {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .quiz-options li {
+            margin: 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+        }
+
+        /* Modal-Stile */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 10px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Swiper-Stile */
+        .swiper-container {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 <body>
-  <header>
-    <h1>Welcome to Learn German with Ray</h1>
-  </header>
+    <header>
+        <h1>Süße Worte</h1>
+        <p>Lerne neue deutsche Vokabeln im Kontext!</p>
+        <button id="openCarousel">Originaltext lesen</button>
+    </header>
+    <main>
+        <section id="summary">
+            <h2>Zusammenfassung</h2>
+            <p>In dieser Lektion lernst du neue Wörter zum Thema Süße und Persönlichkeit.</p>
+            <p><em>In this lesson, you will learn new words about sweetness and personality.</em></p>
+        </section>
+        <section id="vocabulary">
+            <h2>Wortschatz mit Beispielsätzen</h2>
+            <div class="vocab-list">
+                <!-- Vokabeln werden hier von JavaScript eingefügt -->
+            </div>
+        </section>
+        <section id="quiz">
+            <h2>Interaktives Quiz</h2>
+            <div id="quiz-container">
+                <!-- Quizfragen werden hier von JavaScript generiert -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Viel Spaß beim Lernen!</p>
+        <p><em>Have fun learning!</em></p>
+    </footer>
 
-  <div class="container">
-    <h2>Available Lessons</h2>
-    <div class="lesson-grid">
-      <div class="lesson-tile" onclick="location.href='lesson1.html'">
-        <img src="images/lesson1_thumbnail.webp" alt="Lesson 1 Thumbnail">
-        <div class="lesson-tile-content">
-          <h3>Lesson 1: Basic Vocabulary</h3>
-          <p>Learn essential German vocabulary to get started with your learning journey.</p>
+    <!-- Karussell Modal -->
+    <div id="carouselModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Folien werden hier von JavaScript eingefügt -->
+                </div>
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </div>
-      </div>
-      <div class="lesson-tile" onclick="location.href='lesson2.html'">
-        <img src="images/lesson2_thumbnail.jpg" alt="Lesson 2 Thumbnail">
-        <div class="lesson-tile-content">
-          <h3>Lesson 2: Grammar and Expressions</h3>
-          <p>Understand German grammar rules and common expressions for daily use.</p>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <footer>
-    <p style="text-align: center; margin-top: 20px;">German Lessons &copy; 2024. All rights reserved.</p>
-  </footer>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Eingebettetes JavaScript -->
+    <script>
+        // Vokabeln mit Beispielsätzen
+        const vocabulary = [
+            {
+                german: "Zusammenhang",
+                english: "connection",
+                sentence: "Es gibt einen Zusammenhang zwischen Persönlichkeit und Geschmack.",
+                translation: "There is a connection between personality and taste."
+            },
+            {
+                german: "Aktuelle Studie",
+                english: "current study",
+                sentence: "Die aktuelle Studie zeigt interessante Ergebnisse.",
+                translation: "The current study shows interesting results."
+            },
+            {
+                german: "Verstärkt",
+                english: "enhances",
+                sentence: "Zucker verstärkt die süßen Momente des Lebens.",
+                translation: "Sugar enhances the sweet moments of life."
+            },
+            // Weitere Vokabeln hier hinzufügen
+        ];
 
-  <script src="script.js"></script>
+        // Funktion zum Anzeigen der Vokabeln
+        function displayVocabulary() {
+            const vocabList = document.querySelector('.vocab-list');
+            vocabulary.forEach(item => {
+                const vocabItem = document.createElement('div');
+                vocabItem.classList.add('vocab-item');
+                vocabItem.innerHTML = `
+                    <h3>${item.german} - ${item.english}</h3>
+                    <p><strong>Satz:</strong> ${item.sentence}</p>
+                    <p><em>${item.translation}</em></p>
+                `;
+                vocabList.appendChild(vocabItem);
+            });
+        }
+
+        // Quiz-Funktionalität
+        let currentQuestion = 0;
+        let score = 0;
+
+        function startQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            showQuestion(quizContainer);
+        }
+
+        function showQuestion(container) {
+            if (currentQuestion < vocabulary.length) {
+                const vocab = vocabulary[currentQuestion];
+                container.innerHTML = `
+                    <div class="quiz-question">
+                        <p>Was bedeutet "${vocab.german}" auf Englisch?</p>
+                        <ul class="quiz-options">
+                            ${generateOptions(vocab)}
+                        </ul>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `<p>Dein Ergebnis: ${score}/${vocabulary.length}</p>`;
+            }
+        }
+
+        function generateOptions(correctVocab) {
+            const options = [correctVocab.english];
+            while (options.length < 4) {
+                const randomVocab = vocabulary[Math.floor(Math.random() * vocabulary.length)].english;
+                if (!options.includes(randomVocab)) {
+                    options.push(randomVocab);
+                }
+            }
+            // Optionen mischen
+            options.sort(() => Math.random() - 0.5);
+            return options.map(option => `<li><button onclick="checkAnswer('${option}', '${correctVocab.english}')">${option}</button></li>`).join('');
+        }
+
+        function checkAnswer(selected, correct) {
+            if (selected === correct) {
+                score++;
+            }
+            currentQuestion++;
+            showQuestion(document.getElementById('quiz-container'));
+        }
+
+        // Karussell-Funktionalität
+        document.getElementById('openCarousel').addEventListener('click', function() {
+            document.getElementById('carouselModal').style.display = 'block';
+        });
+
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('carouselModal').style.display = 'none';
+        });
+
+        // Swiper initialisieren
+        const swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Folien laden
+        const swiperWrapper = document.querySelector('.swiper-wrapper');
+        const totalSlides = 3; // Anzahl der Bilder anpassen
+        for (let i = 1; i <= totalSlides; i++) {
+            const slide = document.createElement('div');
+            slide.classList.add('swiper-slide');
+            slide.innerHTML = `<img src="images/text-slide${i}.jpg" alt="Text Folie ${i}" style="width:100%; height:auto;">`;
+            swiperWrapper.appendChild(slide);
+        }
+
+        // Seite initialisieren
+        window.onload = function() {
+            displayVocabulary();
+            startQuiz();
+        };
+    </script>
 </body>
 </html>
