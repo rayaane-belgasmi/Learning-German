@@ -312,3 +312,12 @@ footer {
   opacity: 0.8;
   cursor: pointer;
 }
+
+/* Content Container */
+.content-container {
+  max-width: 1200px; /* Adjust the max-width as needed */
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1; /* Ensure it appears above the background image */
+}

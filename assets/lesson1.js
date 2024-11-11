@@ -217,28 +217,7 @@ const vocabulary = [
 
   // Lesson One JavaScript
 
-// Vocabulary Data
-const vocabulary = [
-  {
-    german: "Zusammenhang",
-    english: "connection",
-    sentence: "Es gibt einen Zusammenhang zwischen Persönlichkeit und Geschmack.",
-    translation: "There is a connection between personality and taste."
-  },
-  {
-    german: "Aktuelle Studie",
-    english: "current study",
-    sentence: "Die aktuelle Studie zeigt interessante Ergebnisse.",
-    translation: "The current study shows interesting results."
-  },
-  {
-    german: "Verstärkt",
-    english: "enhances",
-    sentence: "Zucker verstärkt die süßen Momente des Lebens.",
-    translation: "Sugar enhances the sweet moments of life."
-  },
-  // ... (Rest of your vocabulary items)
-];
+
 
 // Shuffle function to randomize arrays
 function shuffle(array) {
