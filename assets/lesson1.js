@@ -215,6 +215,29 @@ const vocabulary = [
     // Add more vocabulary items as needed
   ];
 
+  // Get the modal and close button elements
+const carouselModal = document.getElementById('carouselModal');
+const openCarouselButton = document.getElementById('openCarousel');
+const closeCarouselButton = document.getElementById('closeCarouselModal');
+
+// Open the modal when the "Originaltext lesen" button is clicked
+openCarouselButton.addEventListener('click', function() {
+  carouselModal.style.display = 'block';
+  swiper.update(); // Update Swiper after display
+});
+
+// Close the modal when the close button is clicked
+closeCarouselButton.addEventListener('click', function() {
+  carouselModal.style.display = 'none';
+});
+
+// Close the modal when clicking outside of the modal content
+window.addEventListener('click', function(event) {
+  if (event.target == carouselModal) {
+    carouselModal.style.display = 'none';
+  }
+});
+
 // Flashcard functionality
 let currentCardIndex = 0;
 

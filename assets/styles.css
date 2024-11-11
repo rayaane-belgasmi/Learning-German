@@ -244,15 +244,25 @@ footer {
   max-width: 800px;
 }
 
+/* Close Button Styles */
 .close {
   position: absolute;
+  top: 15px;
   right: 25px;
-  top: 10px;
   color: #fff;
   font-size: 35px;
   font-weight: bold;
   cursor: pointer;
+  z-index: 10;
 }
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 /* Swiper Styles */
 .swiper {
