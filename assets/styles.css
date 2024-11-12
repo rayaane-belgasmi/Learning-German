@@ -333,52 +333,5 @@ main p,
   text-align: center;
 }
 
-/* Header Styles */
-header {
-  width: 100%;
-  background-color: rgb(215, 202, 184);
-  padding: 0;
-  position: relative;
-  box-sizing: border-box;
-}
 
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px; /* Adjust as needed */
-  margin: 0 auto;
-  padding: 10px 20px;
-}
 
-.logo-link {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  max-height: 60px; /* Adjust the height as needed */
-  height: auto;
-  width: auto;
-}
-
-.navigation-menu {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.navigation-menu li {
-  margin-left: 20px;
-}
-
-.navigation-menu a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-}
-
-.navigation-menu a:hover {
-  color: #b35916;
-}
