@@ -355,4 +355,12 @@ main p,
 .navigation-menu a:hover {
   color: #b35916;
 }
+/* Header */
+header {
+  width: 100%;
+  background-color: rgb(215, 202, 184); /* Apply the desired background color */
+  padding: 20px 0;
+  position: relative;
+  box-sizing: border-box;
+}
 
